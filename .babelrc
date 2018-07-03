@@ -1,7 +1,6 @@
 {
   "presets": [
     "@babel/preset-react",
-    ["@babel/preset-env", { "modules": false, "useBuiltIns": "usage" }],
     ["@babel/preset-stage-0", { "decoratorsLegacy": true } ]
   ]
 }

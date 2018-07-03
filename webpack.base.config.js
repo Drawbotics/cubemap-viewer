@@ -32,9 +32,8 @@ module.exports = {
     })),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'Cubemap Viewer',
-      // template: 'index.html',
-      // inject: false,
+      template: 'index.html',
+      inject: true,
     }),
   ],
   module: {

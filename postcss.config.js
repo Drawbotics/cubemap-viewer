@@ -1,3 +1,6 @@
+const path = require('path');
+
+
 module.exports = {
   plugins: {
     'postcss-cssnext': {
@@ -7,7 +10,6 @@ module.exports = {
       browsers: [
         '> 1%',
         'last 2 versions',
-        'not ie < 11',
       ],
     },
   },
