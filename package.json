@@ -4,6 +4,7 @@
   "description": "Simple app to visualise cubemaps in 3D",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf docs/",
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "build": "npm run clean && webpack --config webpack.config.js"
   },
@@ -29,6 +30,7 @@
     "react-dom": "^16.4.1",
     "style-loader": "^0.21.0",
     "tourama": "git+https://533c67d0413cf614b53aa083e0f57269ce1296b2:x-oauth-basic@github.com/Drawbotics/tourama.git#load-cubemaps",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.2"
   },

@@ -17,8 +17,7 @@ class Viewer extends React.Component {
       VERSION: 'dev',
       THEME: 'default',
       UI_OPTIONS: {},
-      SCENES: {
-      },
+      SCENES: {},
     },
     uploadVisible: true,
   }
