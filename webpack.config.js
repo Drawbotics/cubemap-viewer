@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.base.config.js');
 const packageJson = require('./package.json');
@@ -17,12 +16,6 @@ module.exports = Object.assign({}, webpackBaseConfig, {
     }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify('production') }
-    }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        drop_console: true,
-        mangle: false,
-      },
     }),
   ],
 });
