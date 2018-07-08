@@ -22,13 +22,26 @@ class Viewer extends React.Component {
     uploadVisible: true,
   }
 
+  componentDidMount() {
+    const params = new URLSearchParams(location.search);
+    const cubemapUrl = params.get('cubemap');
+    if (cubemapUrl) {
+      this._handleFinishUpload(cubemapUrl);
+    }
+  }
+
   render() {
     const { container, config, uploadVisible, reload } = this.state;
     const { SCENES } = config;
     return (
       <div className={styles.container} ref={(container) => this._handleFrameMount(container)}>
         {do{
-          if (container && SCENES.cubemap) {
+          if (uploadVisible) {
+            <Uploader onFinishUpload={this._handleFinishUpload} />
+          }
+        }}
+        {do{
+          if (container && SCENES.cubemap && ! uploadVisible) {
             <>
               <div className={styles.upload} onClick={() => this.setState({ uploadVisible: true })}>
                 Change image
@@ -37,11 +50,6 @@ class Viewer extends React.Component {
                 {true}
               </Tourama>
             </>
-          }
-        }}
-        {do{
-          if (uploadVisible) {
-            <Uploader onFinishUpload={this._handleFinishUpload} />
           }
         }}
       </div>
