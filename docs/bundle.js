@@ -1837,6 +1837,15 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 
+
+function replaceString(string) {
+  if (string.includes('discordapp') && string.includes('cdn')) {
+    return string.replace('cdn', 'media').replace('com', 'net');
+  }
+
+  return string;
+}
+
 let Uploader = (_class = class Uploader extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   constructor(...args) {
     super(...args);
@@ -1903,10 +1912,11 @@ let Uploader = (_class = class Uploader extends __WEBPACK_IMPORTED_MODULE_0_reac
       onFinishUpload
     } = this.props;
     const parsed = __WEBPACK_IMPORTED_MODULE_2_query_string___default.a.parseUrl(url);
+    const replaced = replaceString(parsed.url);
     const params = new URLSearchParams(location.search);
-    params.set('cubemap', parsed.url);
+    params.set('cubemap', replaced);
     window.history.replaceState({}, '', `${location.pathname}?${params}`);
-    onFinishUpload(parsed.url);
+    onFinishUpload(replaced);
   }
 
 }, (_applyDecoratedDescriptor(_class.prototype, "_handleUploadFile", [__WEBPACK_IMPORTED_MODULE_1_autobind_decorator___default.a], Object.getOwnPropertyDescriptor(_class.prototype, "_handleUploadFile"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_handleSubmit", [__WEBPACK_IMPORTED_MODULE_1_autobind_decorator___default.a], Object.getOwnPropertyDescriptor(_class.prototype, "_handleSubmit"), _class.prototype)), _class);

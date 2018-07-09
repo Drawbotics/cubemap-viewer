@@ -5,6 +5,14 @@ import queryString from 'query-string';
 import styles from '../styles/components/uploader';
 
 
+function replaceString(string) {
+  if (string.includes('discordapp') && string.includes('cdn')) {
+    return string.replace('cdn', 'media').replace('com', 'net');
+  }
+  return string;
+}
+
+
 class Uploader extends React.Component {
   state = {
     url: null,
@@ -58,11 +66,12 @@ class Uploader extends React.Component {
     const { url } = this.state;
     const { onFinishUpload } = this.props;
     const parsed = queryString.parseUrl(url);
+    const replaced = replaceString(parsed.url);
     const params = new URLSearchParams(location.search);
-    params.set('cubemap', parsed.url);
+    params.set('cubemap', replaced);
     window.history.replaceState({}, '', `${location.pathname}?${params}`);
 
-    onFinishUpload(parsed.url);
+    onFinishUpload(replaced);
   }
 }
 
